@@ -14,7 +14,9 @@ $(document).ready(function() {
   
   $.ajax(settings).done(function (response) {
     response.forEach(element => {
-      download_count = download_count + element.assets[0].download_count;
+      if(element?.assets[0]?.download_count) {
+        download_count = download_count + element.assets[0].download_count;
+      }
     });
     $("#download_count").html(download_count);
     console.log(download_count);
